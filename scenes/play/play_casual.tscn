@@ -1,0 +1,214 @@
+[gd_scene load_steps=9 format=3 uid="uid://crsa7onwpo076"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_b3xhf"]
+[ext_resource type="Script" path="res://scripts/play/play_casual_node.gd" id="2_mw282"]
+[ext_resource type="PackedScene" uid="uid://bv1cenko6c662" path="res://scenes/component/header.tscn" id="3_wl6ua"]
+[ext_resource type="FontFile" uid="uid://cwan4lve34fnc" path="res://assets/fonts/Typo Grotesk Rounded Italic Demo.otf" id="6_72xco"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb6wt"]
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e07bh"]
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_top = 16.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e45vl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pmk0"]
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
+
+[node name="PlayCasual" type="Control" node_paths=PackedStringArray("header_node", "course_select", "select_course_message", "available_players", "card_players", "dummy_player_button", "par_rating", "jpdg_avg", "user_avg")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b3xhf")
+script = ExtResource("2_mw282")
+header_node = NodePath("PanelContainer/MarginContainer/VBoxContainer/Header")
+course_select = NodePath("PanelContainer/MarginContainer/VBoxContainer/CourseContainer/CourseSelect")
+select_course_message = NodePath("PanelContainer/MarginContainer/VBoxContainer/CourseContainer/Message")
+available_players = NodePath("PanelContainer/MarginContainer/VBoxContainer/PlayerSelect/AvailableContainer/AvailablePlayers")
+card_players = NodePath("PanelContainer/MarginContainer/VBoxContainer/PlayerSelect/CardContainer/CardPlayers")
+dummy_player_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/PlayerSelect/AvailableContainer/AvailablePlayers/DummyButton")
+par_rating = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/ParRating")
+jpdg_avg = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/JPDGAvg")
+user_avg = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/YourAvg")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rb6wt")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Header" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_wl6ua")]
+layout_mode = 2
+
+[node name="CourseContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 224
+theme_override_constants/margin_right = 192
+
+[node name="CourseSelect" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/CourseContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_e07bh")
+theme_override_constants/arrow_margin = 32
+alignment = 1
+
+[node name="Message" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CourseContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.129, 0.43, 0.269467, 1)
+theme_override_font_sizes/font_size = 72
+text = "Select Course"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("6_72xco")
+theme_override_font_sizes/font_size = 48
+text = "Par Rating"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("6_72xco")
+theme_override_font_sizes/font_size = 48
+text = "JPDG Avg"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("6_72xco")
+theme_override_font_sizes/font_size = 48
+text = "Your Avg"
+horizontal_alignment = 1
+
+[node name="ParRating" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "-"
+horizontal_alignment = 1
+
+[node name="JPDGAvg" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "-"
+horizontal_alignment = 1
+
+[node name="YourAvg" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "-"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 64
+text = "Select Players"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerSelect" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/v_separation = 64
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Available"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Current Card"
+horizontal_alignment = 1
+
+[node name="AvailableContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerSelect"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AvailablePlayers" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerSelect/AvailableContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="DummyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerSelect/AvailableContainer/AvailablePlayers"]
+visible = false
+custom_minimum_size = Vector2(600, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e45vl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5pmk0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5pmk0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5pmk0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5pmk0")
+text = "Dummy Button"
+
+[node name="CardContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CardPlayers" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerSelect/CardContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32

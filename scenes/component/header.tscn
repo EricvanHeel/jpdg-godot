@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv1cenko6c662"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_240a2"]
+[ext_resource type="Script" path="res://scripts/component/header_node.gd" id="1_kd0ia"]
+
+[node name="Header" type="HBoxContainer" node_paths=PackedStringArray("left_button", "title_label", "right_button")]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -48.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_240a2")
+script = ExtResource("1_kd0ia")
+left_button = NodePath("LeftButton")
+title_label = NodePath("TitleLabel")
+right_button = NodePath("RightButton")
+
+[node name="LeftButton" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 8.0
+theme_override_font_sizes/font_size = 96
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RightButton" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4

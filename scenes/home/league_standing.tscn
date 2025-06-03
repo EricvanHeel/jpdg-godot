@@ -1,0 +1,189 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwcyonbv6lt31"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_f0lyt"]
+[ext_resource type="Script" path="res://scripts/home/league_standing_node.gd" id="2_tjq1a"]
+
+[node name="LeagueStanding" type="Control" node_paths=PackedStringArray("flex_1_label", "flex_2_label", "flex_3_label", "flex_4_label", "flex_5_label", "flex_6_label", "major_1_label", "major_2_label", "major_3_label", "major_4_label", "names_container", "player_label", "results_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_f0lyt")
+script = ExtResource("2_tjq1a")
+flex_1_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Flex1")
+flex_2_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Flex2")
+flex_3_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Flex3")
+flex_4_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Flex4")
+flex_5_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Flex5")
+flex_6_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Flex6")
+major_1_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Major1")
+major_2_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Major2")
+major_3_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Major3")
+major_4_label = NodePath("HBoxContainer/ScrollContainer/ResultsContainer/Header/Major4")
+names_container = NodePath("HBoxContainer/NamesContainer")
+player_label = NodePath("HBoxContainer/NamesContainer/PlayerLabel")
+results_container = NodePath("HBoxContainer/ScrollContainer/ResultsContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NamesContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(274, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+
+[node name="PlayerLabel" type="Label" parent="HBoxContainer/NamesContainer"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 48
+text = "Player"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="ResultsContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(3000, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="Header" type="HBoxContainer" parent="HBoxContainer/ScrollContainer/ResultsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Pts" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 48
+text = "Pts"
+horizontal_alignment = 1
+
+[node name="Flex1" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Flex 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Flex2" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Flex 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Flex3" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Flex 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Flex4" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Flex 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Flex5" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Flex 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Flex6" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Flex 6
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Major1" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Major 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Major2" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Major 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Major3" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Major 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Major4" type="Label" parent="HBoxContainer/ScrollContainer/ResultsContainer/Header"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Major 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

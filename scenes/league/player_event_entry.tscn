@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://chhv6d1bgmjcs"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_3pbwu"]
+[ext_resource type="Script" path="res://scripts/league/player_event_entry_node.gd" id="2_4aanq"]
+[ext_resource type="FontFile" uid="uid://doml0twsdym07" path="res://assets/fonts/Typo Grotesk Rounded Demo.otf" id="3_1uv40"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74p54"]
+
+[node name="PlayerEventEntry" type="HBoxContainer" node_paths=PackedStringArray("name_label", "score_label", "place_edit", "points_edit")]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3pbwu")
+script = ExtResource("2_4aanq")
+name_label = NodePath("Name")
+score_label = NodePath("Score")
+place_edit = NodePath("Place")
+points_edit = NodePath("Points")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Player Name"
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Place" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_placeholder_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_constants/caret_width = 4
+theme_override_fonts/font = ExtResource("3_1uv40")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_74p54")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_74p54")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_74p54")
+placeholder_text = "-"
+alignment = 1
+caret_blink = true
+
+[node name="Points" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_constants/caret_width = 4
+theme_override_fonts/font = ExtResource("3_1uv40")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_74p54")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_74p54")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_74p54")
+placeholder_text = "-"
+alignment = 1
+caret_blink = true

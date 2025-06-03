@@ -1,0 +1,299 @@
+[gd_scene load_steps=14 format=3 uid="uid://raf4fl88p100"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_l75k2"]
+[ext_resource type="Script" path="res://scripts/component/scorecard_node.gd" id="2_od7tm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3jg"]
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lkjba"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q0lmu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dd5ns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qim1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb6fd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xle8q"]
+
+[sub_resource type="Animation" id="Animation_e3ch4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/VBoxContainer/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5u15a"]
+resource_name = "collapse"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 360), Vector2(0, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/VBoxContainer/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r6v57"]
+resource_name = "expand"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 160), Vector2(0, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/VBoxContainer/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mgy6j"]
+_data = {
+"RESET": SubResource("Animation_e3ch4"),
+"collapse": SubResource("Animation_5u15a"),
+"expand": SubResource("Animation_r6v57")
+}
+
+[node name="Scorecard" type="Control" node_paths=PackedStringArray("first_name_label", "course_label", "score_diff_label", "last_name_label", "date_label", "rating_label", "expand_button", "scores_container", "score_margin", "animation_player")]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_l75k2")
+script = ExtResource("2_od7tm")
+first_name_label = NodePath("PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer/FirstName")
+course_label = NodePath("PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer/Course")
+score_diff_label = NodePath("PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer/ParScore")
+last_name_label = NodePath("PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer2/LastName")
+date_label = NodePath("PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer2/Date")
+rating_label = NodePath("PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer2/Rating")
+expand_button = NodePath("PanelContainer/VBoxContainer/ExpandButton")
+scores_container = NodePath("PanelContainer/VBoxContainer/MarginContainer/ScorecardContainer")
+score_margin = NodePath("PanelContainer/VBoxContainer/MarginContainer")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh3jg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ExpandButton" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lkjba")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_q0lmu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dd5ns")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qim1s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wb6fd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xle8q")
+
+[node name="HeaderMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer/ExpandButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 20
+
+[node name="HeaderContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="FirstName" type="Label" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Eric"
+vertical_alignment = 1
+
+[node name="Course" type="Label" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+text = "Tower Ridge (White)"
+vertical_alignment = 1
+
+[node name="ParScore" type="Label" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "+2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LastName" type="Label" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 40
+text = "van Heel"
+vertical_alignment = 1
+
+[node name="Date" type="Label" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 40
+text = "4/2/25"
+vertical_alignment = 1
+
+[node name="Rating" type="Label" parent="PanelContainer/VBoxContainer/ExpandButton/HeaderMargin/HeaderContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 40
+text = "904"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="ScorecardContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 12
+columns = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mgy6j")
+}

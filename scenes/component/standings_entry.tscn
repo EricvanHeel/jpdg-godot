@@ -1,0 +1,127 @@
+[gd_scene load_steps=3 format=3 uid="uid://dji1tx4ir0kb3"]
+
+[ext_resource type="Script" path="res://scripts/component/standings_entry_node.gd" id="1_480ye"]
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_i38r3"]
+
+[node name="StandingsEntry" type="Control" node_paths=PackedStringArray("total_pts_label", "flex_1_label", "flex_2_label", "flex_3_label", "flex_4_label", "flex_5_label", "flex_6_label", "major_1_label", "major_2_label", "major_3_label", "major_4_label")]
+custom_minimum_size = Vector2(3000, 115)
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+theme = ExtResource("1_i38r3")
+script = ExtResource("1_480ye")
+total_pts_label = NodePath("Results/Pts")
+flex_1_label = NodePath("Results/Flex1")
+flex_2_label = NodePath("Results/Flex2")
+flex_3_label = NodePath("Results/Flex3")
+flex_4_label = NodePath("Results/Flex4")
+flex_5_label = NodePath("Results/Flex5")
+flex_6_label = NodePath("Results/Flex6")
+major_1_label = NodePath("Results/Major1")
+major_2_label = NodePath("Results/Major2")
+major_3_label = NodePath("Results/Major3")
+major_4_label = NodePath("Results/Major4")
+
+[node name="Results" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Pts" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="Flex1" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Flex2" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Flex3" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Flex4" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Flex5" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Flex6" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Major1" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Major2" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Major3" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+
+[node name="Major4" type="Label" parent="Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1

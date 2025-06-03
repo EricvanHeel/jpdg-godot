@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcu2gmgwqqtng"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_8cvms"]
+[ext_resource type="Script" path="res://scripts/stats/profile_node.gd" id="2_3pe3y"]
+[ext_resource type="PackedScene" uid="uid://bv1cenko6c662" path="res://scenes/component/header.tscn" id="3_q36ia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q57fo"]
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08wi0"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="Profile" type="PanelContainer" node_paths=PackedStringArray("header", "main_container", "top_rounds_this_year", "rounds_recorded", "courses_played", "current_rating", "no_rounds_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8cvms")
+theme_override_styles/panel = SubResource("StyleBoxFlat_q57fo")
+script = ExtResource("2_3pe3y")
+header = NodePath("MarginContainer/VBoxContainer/Header")
+main_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContent")
+top_rounds_this_year = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContent/TopRoundsContainer/TopRounds")
+rounds_recorded = NodePath("MarginContainer/VBoxContainer/GridContainer/Rounds")
+courses_played = NodePath("MarginContainer/VBoxContainer/GridContainer/Courses")
+current_rating = NodePath("MarginContainer/VBoxContainer/GridContainer/Rating")
+no_rounds_label = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContent/TopRoundsContainer/TopRounds/NoTopRounds")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 96
+
+[node name="Header" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_q36ia")]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Rounds" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 96
+text = "36"
+horizontal_alignment = 1
+
+[node name="Rating" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 96
+text = "900"
+horizontal_alignment = 1
+
+[node name="Courses" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 96
+text = "11"
+horizontal_alignment = 1
+
+[node name="RoundsLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Rounds
+Recorded"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RatingLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Current
+Rating"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CourseLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Courses
+Played"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MainContent" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="TopRoundsContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContent"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_08wi0")
+
+[node name="TopRounds" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContent/TopRoundsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContent/TopRoundsContainer/TopRounds"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Top Rounds This Year"
+horizontal_alignment = 1
+
+[node name="NoTopRounds" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContent/TopRoundsContainer/TopRounds"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+text = "No Rounds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Joe Pesci Disc Golf"
+run/main_scene="res://scenes/start/start.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/bg_color=Color(0.0666667, 0.219608, 0.137255, 1)
+boot_splash/show_image=false
+config/icon="res://assets/images/icon.png"
+
+[autoload]
+
+ClientData="*res://scripts/autoloaders/client_data.gd"
+Request="*res://scripts/autoloaders/request.gd"
+Rounds="*res://scripts/autoloaders/rounds.gd"
+Courses="*res://scripts/autoloaders/courses.gd"
+Leagues="*res://scripts/autoloaders/leagues.gd"
+
+[display]
+
+window/size/viewport_width=1440
+window/size/viewport_height=2560
+window/size/window_width_override=720
+window/size/window_height_override=1280
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

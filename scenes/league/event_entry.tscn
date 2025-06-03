@@ -1,0 +1,232 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctyxk4rcjwr30"]
+
+[ext_resource type="FontFile" uid="uid://cwan4lve34fnc" path="res://assets/fonts/Typo Grotesk Rounded Italic Demo.otf" id="1_81l5k"]
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_bce6t"]
+[ext_resource type="Script" path="res://scripts/league/event_entry_node.gd" id="2_6bx1f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6tpa"]
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml6i7"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivr05"]
+
+[sub_resource type="Animation" id="Animation_w6qtc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jgumd"]
+resource_name = "collapse"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eq6x8"]
+resource_name = "expand"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6rsm"]
+_data = {
+"RESET": SubResource("Animation_w6qtc"),
+"collapse": SubResource("Animation_jgumd"),
+"expand": SubResource("Animation_eq6x8")
+}
+
+[node name="EventEntry" type="PanelContainer" node_paths=PackedStringArray("title_label", "courses_label", "status_label", "scores_container", "button", "animation_player", "complete_event_button", "no_scores_label")]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_bce6t")
+theme_override_styles/panel = SubResource("StyleBoxFlat_t6tpa")
+script = ExtResource("2_6bx1f")
+title_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/EventTitle")
+courses_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Course")
+status_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Status")
+scores_container = NodePath("MarginContainer/VBoxContainer/ExpandContainer")
+button = NodePath("Button")
+animation_player = NodePath("AnimationPlayer")
+complete_event_button = NodePath("MarginContainer/VBoxContainer/ExpandContainer/CompleteEventButton")
+no_scores_label = NodePath("MarginContainer/VBoxContainer/ExpandContainer/NoRoundsLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EventTitle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Event Title"
+autowrap_mode = 3
+
+[node name="Course" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Courses"
+autowrap_mode = 3
+
+[node name="Status" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("1_81l5k")
+theme_override_font_sizes/font_size = 40
+text = "Status"
+horizontal_alignment = 2
+
+[node name="ExpandContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="CompleteEventButton" type="Button" parent="MarginContainer/VBoxContainer/ExpandContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.0666667, 0.219608, 0.137255, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.0666667, 0.219608, 0.137255, 1)
+theme_override_colors/font_hover_color = Color(0.0666667, 0.219608, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.0666667, 0.219608, 0.137255, 1)
+theme_override_colors/font_focus_color = Color(0.0666667, 0.219608, 0.137255, 1)
+theme_override_colors/font_color = Color(0.0666667, 0.219608, 0.137255, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_ml6i7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ml6i7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ml6i7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ml6i7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ml6i7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ml6i7")
+text = "Complete Event"
+
+[node name="NoRoundsLabel" type="Label" parent="MarginContainer/VBoxContainer/ExpandContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 48
+text = "No Players Completed"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ivr05")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ivr05")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ivr05")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ivr05")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ivr05")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ivr05")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k6rsm")
+}

@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://yarplh02x4g5"]
+
+[ext_resource type="PackedScene" uid="uid://bv1cenko6c662" path="res://scenes/component/header.tscn" id="1_1syec"]
+[ext_resource type="Script" path="res://scripts/league/manage_league_node.gd" id="1_7tt1j"]
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_re8rf"]
+[ext_resource type="FontFile" uid="uid://bv8bb07ocdimy" path="res://assets/fonts/White Chalk.ttf" id="4_q212a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_felml"]
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y48yb"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_fxoxg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1l8t"]
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ek0l"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ManageLeague" type="PanelContainer" node_paths=PackedStringArray("header_node", "events_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_re8rf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_felml")
+script = ExtResource("1_7tt1j")
+header_node = NodePath("MarginContainer/VBoxContainer/Header")
+events_container = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/EventsContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Header" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_1syec")]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MembersButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0.021, 0.07, 0.0438667, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("4_q212a")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y48yb")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fxoxg")
+text = "Members"
+
+[node name="EventsButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0.021, 0.07, 0.0438667, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("4_q212a")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y48yb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y48yb")
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_fxoxg")
+text = "Events"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_d1l8t")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="EventsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 48
+
+[node name="AddEventButton" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/EventsContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ek0l")
+text = "Add New Event"

@@ -1,0 +1,539 @@
+[gd_scene load_steps=20 format=3 uid="uid://bt2yiwkwj6163"]
+
+[ext_resource type="FontFile" uid="uid://cq4p0l3hw40wi" path="res://assets/fonts/Autography.otf" id="1_0qx4a"]
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_1rldx"]
+[ext_resource type="FontFile" uid="uid://doml0twsdym07" path="res://assets/fonts/Typo Grotesk Rounded Demo.otf" id="2_4edxx"]
+[ext_resource type="Script" path="res://scripts/start/start_node.gd" id="2_6tvaa"]
+[ext_resource type="PackedScene" uid="uid://c7asxoyv1b8if" path="res://scenes/component/loading.tscn" id="6_28o3y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pta6q"]
+bg_color = Color(0.066, 0.22, 0.1353, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7itwf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1wb7"]
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mtrd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4gfb"]
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlkf6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ky5cn"]
+
+[sub_resource type="Animation" id="Animation_2cs48"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/LoginContainer/Margin:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/LoginContainer/TitleLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:custom_minimum_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.82, 0.6806, 0.123, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/ScrollContainer/VBoxContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:theme_override_colors/font_focus_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.82, 0.6806, 0.123, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:theme_override_colors/font_pressed_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.82, 0.6806, 0.123, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PanelContainer/StartupContainer/HelloMsg:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PanelContainer/StartupContainer/Control:size_flags_stretch_ratio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PanelContainer/StartupContainer:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PanelContainer/LoginContainer:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fiqh0"]
+resource_name = "expand"
+length = 2.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/LoginContainer/Margin:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1.6),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 2.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/LoginContainer/TitleLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:custom_minimum_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, 128), Vector2(512, 128)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.8, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.82, 0.6806, 0.123, 0), Color(0.82, 0.6806, 0.123, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/LoginContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ljiqi"]
+resource_name = "loading"
+length = 1.6
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_n4iry"]
+resource_name = "login"
+length = 1.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:theme_override_colors/font_focus_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.0666667, 0.219608, 0.137255, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:theme_override_colors/font_pressed_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.0666667, 0.219608, 0.137255, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.0666667, 0.219608, 0.137255, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_agf52"]
+resource_name = "players"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/ScrollContainer/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_in85a"]
+resource_name = "startup"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/StartupContainer/HelloMsg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/StartupContainer/Control:size_flags_stretch_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/StartupContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0w08h"]
+_data = {
+"RESET": SubResource("Animation_2cs48"),
+"expand": SubResource("Animation_fiqh0"),
+"loading": SubResource("Animation_ljiqi"),
+"login": SubResource("Animation_n4iry"),
+"players": SubResource("Animation_agf52"),
+"startup": SubResource("Animation_in85a")
+}
+
+[node name="Control" type="Control" node_paths=PackedStringArray("animation_player", "names_container", "login_button", "login_container", "dummy_player_button", "loading_node", "startup_message")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1rldx")
+script = ExtResource("2_6tvaa")
+animation_player = NodePath("AnimationPlayer")
+names_container = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/ScrollContainer/VBoxContainer")
+login_button = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/Button")
+login_container = NodePath("PanelContainer/LoginContainer")
+dummy_player_button = NodePath("PanelContainer/LoginContainer/Margin/VBoxContainer/ScrollContainer/VBoxContainer/DummyButton")
+loading_node = NodePath("PanelContainer/Loading")
+startup_message = NodePath("PanelContainer/StartupContainer/HelloMsg")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pta6q")
+
+[node name="StartupContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HelloMsg" type="Label" parent="PanelContainer/StartupContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 128
+text = "hello!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/StartupContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="LoginContainer" type="VBoxContainer" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/LoginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("1_0qx4a")
+theme_override_font_sizes/font_size = 180
+text = "Joe Pesci's
+Disc Golf League"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Margin" type="MarginContainer" parent="PanelContainer/LoginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/LoginContainer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 96
+
+[node name="Button" type="Button" parent="PanelContainer/LoginContainer/Margin/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_1rldx")
+theme_override_colors/font_pressed_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 0)
+theme_override_fonts/font = ExtResource("2_4edxx")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7itwf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h1wb7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h1wb7")
+text = "hello!"
+
+[node name="Label" type="Label" parent="PanelContainer/LoginContainer/Margin/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Welcome, to the Official JPDG app
+for the 2025 season
+
+Select your name from below
+to be remembered on this device"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/LoginContainer/Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/LoginContainer/Margin/VBoxContainer/ScrollContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="DummyButton" type="Button" parent="PanelContainer/LoginContainer/Margin/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(0.042, 0.14, 0.0877333, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_pressed_color = Color(0.042, 0.14, 0.0877333, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2mtrd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i4gfb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xlkf6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i4gfb")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ky5cn")
+text = "Dummy Button"
+
+[node name="Loading" parent="PanelContainer" instance=ExtResource("6_28o3y")]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0w08h")
+}
