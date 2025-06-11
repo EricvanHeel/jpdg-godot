@@ -32,6 +32,19 @@ const BRIGHT_GREEN = "33ab6b"
 
 const PERIOD = "․"
 
+const EVENT_COLORS = {
+	"MONTHLY_FLEX": WHITE,
+	"TWO_ROUND": BRIGHT_GREEN,
+	"BAG_TAG": YELLOW,
+	"MISC": WHITE
+}
+const EVENT_NAMES = {
+	"MONTHLY_FLEX": "Flex Series",
+	"TWO_ROUND": "Majors",
+	"BAG_TAG": "Bag Tag",
+	"MISC": "Miscellaneous"
+}
+
 
 static func get_rating(round: Dictionary) -> int:
 	var score = get_raw_over_under(round)
@@ -55,6 +68,12 @@ static func format_over_under(diff: int) -> String:
 	if diff == 0:
 		return "E"
 	return "+" + str(diff)
+
+
+static func get_written_date(iso_date_string: String) -> String:
+	var date_parts = iso_date_string.split("-")
+	var month_string = MONTH[int(date_parts[1])]
+	return "%s %s" % [month_string, date_parts[2]]
 
 
 static func get_formatted_date(timestamp: int) -> String:

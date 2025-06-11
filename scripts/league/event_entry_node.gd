@@ -4,7 +4,8 @@ extends PanelContainer
 var player_entry_scene = preload("res://scenes/league/player_event_entry.tscn")
 
 const FLEX_POINTS = [20, 16, 13, 10, 7, 5, 3, 1]
-const MAJOR_POINTS =[25, 19, 15, 12, 9, 7, 5, 3, 1]
+const MAJOR_POINTS = [25, 19, 15, 12, 9, 7, 5, 3, 1]
+const BAG_TAG_POINTS = [13, 10, 8, 6, 4, 3, 2, 1]
 
 @export var title_label: Label
 @export var courses_label: Label

@@ -87,7 +87,7 @@ func _update_stroke() -> void:
 	current_strokes_label.text = str(round["scores"][current_hole_index]["strokes"])
 	current_strokes_label.add_theme_color_override("font_color", Common.WHITE)
 	_set_score_panel()
-	current_over_under.text = Common.format_over_under(Common.get_raw_over_under(round, course))
+	current_over_under.text = Common.format_over_under(Common.get_raw_over_under(round))
 
 
 

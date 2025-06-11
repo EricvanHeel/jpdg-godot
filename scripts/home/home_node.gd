@@ -19,6 +19,8 @@ var standings_scene = preload("res://scenes/home/league_standing.tscn")
 
 @export var standings_title: Label
 @export var standings_container: VBoxContainer
+@export var standings_prev_button: Button
+@export var standings_next_button: Button
 
 @export var menu_button: Button
 @export var space_button: Button
@@ -32,21 +34,28 @@ var standings_scene = preload("res://scenes/home/league_standing.tscn")
 @export var log_out_button: Button
 
 var last_animation: String = "main_feed"
+var standings_year: int = 0
 
 func _ready() -> void:
 	profile_button.pressed.connect(_change_scene.bind("res://scenes/stats/profile.tscn"))
 	
 	# Setup standings
 	var league_standings: LeagueStandingNode = standings_scene.instantiate()
-	league_standings.setup(2025)
+	standings_year = Time.get_datetime_dict_from_system()["year"]
+	standings_title.text = "%s Pro Tour" % str(standings_year)
+	league_standings.setup(standings_year)
 	standings_container.add_child(league_standings)
 	pro_tour_button.pressed.connect(_play_animation.bind("pro_tour"))
+	standings_prev_button.pressed.connect(_prev_pro_tour)
+	standings_next_button.pressed.connect(_next_pro_tour)
+	standings_prev_button.disabled = !str(standings_year - 1) in Leagues.leagues["JPDG"]["seasons"]
 	
 	# Setup rounds feed
 	sort_filter.item_selected.connect(_get_rounds)
 	time_filter.item_selected.connect(_get_rounds)
 	users_filter.item_selected.connect(_get_rounds)
-	_sort_and_add_scorecards(Rounds.get_rounds_this_month())
+	#_sort_and_add_scorecards(Rounds.get_rounds_this_month())
+	_sort_and_add_scorecards(Rounds.get_rounds_last_n_days(30))
 	feed_button.pressed.connect(_play_animation.bind("main_feed"))
 	
 	# Setup menu
@@ -66,7 +75,7 @@ func _ready() -> void:
 		if major:
 			major_round_button.text = major["name"]
 			major_round_button.visible = true
-			# TODO: connect to function that changes scene
+			major_round_button.pressed.connect(_change_scene.bind("res://scenes/play/play_major.tscn"))
 		if Leagues.is_admin(ClientData.user, "JPDG"):
 			manage_league_button.visible = true
 			manage_league_button.pressed.connect(_change_scene.bind("res://scenes/league/manage_league.tscn"))
@@ -94,7 +103,7 @@ func _sort_and_add_scorecards(rounds: Array) -> void:
 		2:  # Recent
 			scoredcard_nodes.sort_custom(func(a, b): return a.timestamp > b.timestamp)
 	for node in scoredcard_nodes:
-		if feed_container.get_child_count() == 26:
+		if feed_container.get_child_count() == 16:  # Limit to 15 rounds
 			break
 		feed_container.add_child(node)
 
@@ -110,6 +119,31 @@ func _get_rounds(index: int) -> void:
 			_sort_and_add_scorecards(Rounds.get_rounds_this_year(users))
 		3:
 			_sort_and_add_scorecards(Rounds.get_rounds_last_n_days(365, users))
+	animation_player.play("sort_rounds")
+
+func _prev_pro_tour() -> void:
+	var node: LeagueStandingNode = standings_container.get_children()[1]
+	standings_container.remove_child(node)
+	standings_year -= 1
+	var league_standings: LeagueStandingNode = standings_scene.instantiate()
+	league_standings.setup(standings_year)
+	standings_container.add_child(league_standings)
+	standings_title.text = "%s Pro Tour" % str(standings_year)
+	standings_next_button.disabled = false
+	standings_prev_button.disabled = !str(standings_year - 1) in Leagues.leagues["JPDG"]["seasons"]
+	league_standings.animation_player.play("fade_in")
+
+func _next_pro_tour() -> void:
+	var node: LeagueStandingNode = standings_container.get_children()[1]
+	standings_container.remove_child(node)
+	standings_year += 1
+	var league_standings: LeagueStandingNode = standings_scene.instantiate()
+	league_standings.setup(standings_year)
+	standings_container.add_child(league_standings)
+	standings_title.text = "%s Pro Tour" % str(standings_year)
+	standings_prev_button.disabled = false
+	standings_next_button.disabled = !str(standings_year + 1) in Leagues.leagues["JPDG"]["seasons"]
+	league_standings.animation_player.play("fade_in")
 
 func _sync_data() -> void:
 	ClientData.reset_last_login()

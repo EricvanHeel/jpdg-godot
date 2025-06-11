@@ -138,5 +138,3 @@ theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
 text = "No Rounds"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

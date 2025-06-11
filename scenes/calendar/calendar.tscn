@@ -14,7 +14,7 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[node name="Profile" type="PanelContainer" node_paths=PackedStringArray("header_node")]
+[node name="Profile" type="PanelContainer" node_paths=PackedStringArray("header_node", "events_container", "event_title_temp", "flex_event_temp", "two_round_temp")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,6 +24,10 @@ theme = ExtResource("1_0rnk6")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ajfjc")
 script = ExtResource("1_whbeb")
 header_node = NodePath("MarginContainer/VBoxContainer/Header")
+events_container = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer")
+event_title_temp = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer/EventTitle")
+flex_event_temp = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer/FlexEventTemp")
+two_round_temp = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer/TwoRoundTemp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -51,22 +55,24 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="EventsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 48
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="EventTitle" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 72
 text = "Flex Series"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="FlexEventTemp" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="MonthLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer/FlexEventTemp"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
@@ -74,114 +80,17 @@ theme_override_font_sizes/font_size = 64
 text = "April"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="CourseLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer/FlexEventTemp"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "Ecker Hill"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "May"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Lufbery Park"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "June"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Alvord Park"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "July"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Page Park"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "August"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Alsop Meadows"
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer6"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "September"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer6"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Panthorn Park"
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 72
-text = "Majors"
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="TwoRoundTemp" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer"]
+visible = false
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TitleDateLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer/TwoRoundTemp"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
@@ -189,63 +98,9 @@ theme_override_font_sizes/font_size = 64
 text = "Mass Open - June 21"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="CoursesLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/EventsContainer/TwoRoundTemp"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "Maple Hill & Pyramids"
-horizontal_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "4th of July Classic - July 4"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Nichol's Field"
-horizontal_alignment = 1
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "JPDG Masters - August 14"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Wickham Park"
-horizontal_alignment = 1
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
-theme_override_font_sizes/font_size = 64
-text = "President's Cup - September 20"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Tower Ridge"
 horizontal_alignment = 1

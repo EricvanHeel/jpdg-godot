@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=3 uid="uid://80stsjkmu5qc"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_tv2k3"]
+[ext_resource type="Script" path="res://scripts/play/play_major_node.gd" id="2_8x1j6"]
+[ext_resource type="PackedScene" uid="uid://bv1cenko6c662" path="res://scenes/component/header.tscn" id="2_v84aa"]
+[ext_resource type="FontFile" uid="uid://cwan4lve34fnc" path="res://assets/fonts/Typo Grotesk Rounded Italic Demo.otf" id="3_s0s35"]
+[ext_resource type="FontFile" uid="uid://doml0twsdym07" path="res://assets/fonts/Typo Grotesk Rounded Demo.otf" id="5_vdv7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64ca6"]
+content_margin_left = 64.0
+content_margin_top = 128.0
+content_margin_right = 64.0
+content_margin_bottom = 64.0
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yibmo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r25v2"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqau6"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.129, 0.43, 0.269467, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_kb7aq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_texag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctu2r"]
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
+
+[node name="PlayMajor" type="PanelContainer" node_paths=PackedStringArray("header_node", "courses_label", "course_button_1", "course_button_2", "rating_label", "jpdg_avg_label", "user_avg_label", "available_players", "card_players", "dummy_player_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tv2k3")
+theme_override_styles/panel = SubResource("StyleBoxFlat_64ca6")
+script = ExtResource("2_8x1j6")
+header_node = NodePath("VBoxContainer/Header")
+courses_label = NodePath("VBoxContainer/CoursesLabel")
+course_button_1 = NodePath("VBoxContainer/HBoxContainer/CourseButton1")
+course_button_2 = NodePath("VBoxContainer/HBoxContainer/CourseButton2")
+rating_label = NodePath("VBoxContainer/StatsContainer/ParRating")
+jpdg_avg_label = NodePath("VBoxContainer/StatsContainer/JPDGAvg")
+user_avg_label = NodePath("VBoxContainer/StatsContainer/YourAvg")
+available_players = NodePath("VBoxContainer/PlayerSelect/AvailableContainer/AvailablePlayers")
+card_players = NodePath("VBoxContainer/PlayerSelect/CardContainer/CardPlayers")
+dummy_player_button = NodePath("VBoxContainer/PlayerSelect/AvailableContainer/AvailablePlayers/DummyButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Header" parent="VBoxContainer" instance=ExtResource("2_v84aa")]
+layout_mode = 2
+
+[node name="CoursesLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_s0s35")
+theme_override_font_sizes/font_size = 72
+text = "No Event"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="CourseButton1" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("5_vdv7s")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yibmo")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_r25v2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_oqau6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r25v2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oqau6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r25v2")
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_kb7aq")
+text = "Course 1"
+
+[node name="CourseButton2" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("5_vdv7s")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yibmo")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_r25v2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_oqau6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r25v2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oqau6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r25v2")
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_kb7aq")
+text = "Course 2"
+
+[node name="StatsContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("3_s0s35")
+theme_override_font_sizes/font_size = 48
+text = "Par Rating"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("3_s0s35")
+theme_override_font_sizes/font_size = 48
+text = "JPDG Avg"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_fonts/font = ExtResource("3_s0s35")
+theme_override_font_sizes/font_size = 48
+text = "Your Avg"
+horizontal_alignment = 1
+
+[node name="ParRating" type="Label" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "-"
+horizontal_alignment = 1
+
+[node name="JPDGAvg" type="Label" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "-"
+horizontal_alignment = 1
+
+[node name="YourAvg" type="Label" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "-"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 64
+text = "Select Players"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerSelect" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/v_separation = 64
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayerSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Available"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/PlayerSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Current Card"
+horizontal_alignment = 1
+
+[node name="AvailableContainer" type="ScrollContainer" parent="VBoxContainer/PlayerSelect"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AvailablePlayers" type="VBoxContainer" parent="VBoxContainer/PlayerSelect/AvailableContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="DummyButton" type="Button" parent="VBoxContainer/PlayerSelect/AvailableContainer/AvailablePlayers"]
+visible = false
+custom_minimum_size = Vector2(600, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_focus_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_texag")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ctu2r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ctu2r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ctu2r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctu2r")
+text = "Dummy Button"
+
+[node name="CardContainer" type="ScrollContainer" parent="VBoxContainer/PlayerSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CardPlayers" type="VBoxContainer" parent="VBoxContainer/PlayerSelect/CardContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32

@@ -24,7 +24,7 @@ func get_course_average(course_name: String, players: Array = Common.PLAYERS) ->
 	var total = float(round_scores.reduce(func(accum, number): return accum + number))
 	var avg: float = total / len(round_scores)
 	var plus = "+" if avg > 0 else ""
-	return (plus + "%.1f" % avg).replace(".", "․")
+	return (plus + "%.1f" % avg).replace(".", Common.PERIOD)
 
 func get_hole_par(course: Dictionary, hole: String) -> int:
 	if hole in course["holes"]:

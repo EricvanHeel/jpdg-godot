@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxbfc83bto3es"]
+[gd_scene load_steps=32 format=3 uid="uid://cxbfc83bto3es"]
 
 [ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_enwe0"]
 [ext_resource type="Script" path="res://scripts/home/home_node.gd" id="2_l076g"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dk8dj8adlsenm" path="res://assets/images/profile_button.png" id="5_tievj"]
 [ext_resource type="Texture2D" uid="uid://cy757tt88jj6" path="res://assets/images/cancel_button.png" id="7_onf0o"]
 [ext_resource type="FontFile" uid="uid://doml0twsdym07" path="res://assets/fonts/Typo Grotesk Rounded Demo.otf" id="7_vfgvy"]
+[ext_resource type="Texture2D" uid="uid://cgon22t6or6la" path="res://assets/images/back_button.png" id="8_mnekp"]
+[ext_resource type="Texture2D" uid="uid://ucr6vvq6pnlm" path="res://assets/images/next_button.png" id="9_tu7yg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf51m"]
 bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
@@ -28,6 +30,18 @@ corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbn5i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjtxy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yalfg"]
+texture = ExtResource("8_mnekp")
+modulate_color = Color(0.129, 0.43, 0.269467, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nffx"]
+texture = ExtResource("9_tu7yg")
+modulate_color = Color(0.129, 0.43, 0.269467, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwwa2"]
 bg_color = Color(0.042, 0.14, 0.0877333, 1)
@@ -132,6 +146,18 @@ tracks/7/path = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/Margin/ScrollFeed:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -350,16 +376,34 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_5f8a0"]
+resource_name = "sort_rounds"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/Margin/ScrollFeed:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jxccq"]
 _data = {
 "RESET": SubResource("Animation_uwsae"),
 "collapse_menu": SubResource("Animation_ifhhn"),
 "expand_menu": SubResource("Animation_f1nop"),
 "main_feed": SubResource("Animation_610cj"),
-"pro_tour": SubResource("Animation_ij7qe")
+"pro_tour": SubResource("Animation_ij7qe"),
+"sort_rounds": SubResource("Animation_5f8a0")
 }
 
-[node name="Home" type="Control" node_paths=PackedStringArray("animation_player", "profile_button", "feed_button", "pro_tour_button", "panel_feed", "feed_container", "no_rounds_label", "sort_filter", "time_filter", "users_filter", "standings_title", "standings_container", "menu_button", "space_button", "close_menu_button", "casual_round_button", "flex_round_button", "major_round_button", "league_schedule_button", "manage_league_button", "sync_data_button", "log_out_button")]
+[node name="Home" type="Control" node_paths=PackedStringArray("animation_player", "profile_button", "feed_button", "pro_tour_button", "panel_feed", "feed_container", "no_rounds_label", "sort_filter", "time_filter", "users_filter", "standings_title", "standings_container", "standings_prev_button", "standings_next_button", "menu_button", "space_button", "close_menu_button", "casual_round_button", "flex_round_button", "major_round_button", "league_schedule_button", "manage_league_button", "sync_data_button", "log_out_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -378,8 +422,10 @@ no_rounds_label = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContaine
 sort_filter = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer/SortFilter")
 time_filter = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer/TimeFilter")
 users_filter = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer/UsersFilter")
-standings_title = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/StandingsTitle")
+standings_title = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer/StandingsTitle")
 standings_container = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer")
+standings_prev_button = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer/PrevProTourButton")
+standings_next_button = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer/NextProTourButton")
 menu_button = NodePath("PanelContainer/MainContainer/HeaderContainer/MenuButton")
 space_button = NodePath("PanelContainer/MenuContainer/SpaceButton")
 close_menu_button = NodePath("PanelContainer/MenuContainer/PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton")
@@ -608,11 +654,37 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="StandingsTitle" type="Label" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer"]
 layout_mode = 2
+
+[node name="PrevProTourButton" type="Button" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gbn5i")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jjtxy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_yalfg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yalfg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yalfg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yalfg")
+disabled = true
+
+[node name="StandingsTitle" type="Label" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 72
-text = "2025 Pro Tour Standings"
+text = "SET ME!!!"
 horizontal_alignment = 1
+
+[node name="NextProTourButton" type="Button" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gbn5i")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jjtxy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_3nffx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3nffx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3nffx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nffx")
+disabled = true
 
 [node name="MenuContainer" type="HBoxContainer" parent="PanelContainer"]
 visible = false

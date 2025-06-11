@@ -24,7 +24,11 @@ bg_color = Color(0.042, 0.14, 0.0877333, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0h86x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7e81g"]
-bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
 expand_margin_left = 32.0
 expand_margin_top = 32.0
 expand_margin_right = 32.0
