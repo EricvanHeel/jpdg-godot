@@ -19,18 +19,18 @@ var top_rounds_strokes: Array
 var top_rounds_rating: Array
 
 func _ready() -> void:
-	header.setup("home_button", "", ClientData.user, "Autography.otf")
+	header.setup("home_button", "", ClientData.profile_user, "Autography.otf")
 	header.title_label.add_theme_font_size_override("font_size", 128)
 	header.left_button.pressed.connect(_go_home)
 	
-	rounds_recorded.text = str(len(Rounds.get_all_rounds_by_user(ClientData.user)))
-	var rating = Rounds.get_player_rating(ClientData.user)
+	rounds_recorded.text = str(len(Rounds.get_all_rounds_by_user(ClientData.profile_user)))
+	var rating = Rounds.get_player_rating(ClientData.profile_user)
 	current_rating.text = str(rating) if rating else "-"
-	courses_played.text = str(len(Rounds.rounds[ClientData.user]))
+	courses_played.text = str(len(Rounds.rounds[ClientData.profile_user]))
 	
 	var stats_node: StatsNode = stats_scene.instantiate()
 	var current_year = str(Time.get_datetime_dict_from_system()["year"])
-	stats_node.setup("%s Stats" % current_year, true, [ClientData.user], [current_year])
+	stats_node.setup("%s Stats" % current_year, true, [ClientData.profile_user], [current_year])
 	main_container.add_child(stats_node)
 	main_container.move_child(stats_node, 0)
 	
@@ -46,7 +46,7 @@ func _ready() -> void:
 	var year = int(current_year) - 1
 	while year > 2022:
 		var prev_stats_node: StatsNode = stats_scene.instantiate()
-		prev_stats_node.setup("%s Stats" % str(year), false, [ClientData.user], [str(year)])
+		prev_stats_node.setup("%s Stats" % str(year), false, [ClientData.profile_user], [str(year)])
 		if prev_stats_node.rounds:
 			main_container.add_child(prev_stats_node)
 		year -= 1

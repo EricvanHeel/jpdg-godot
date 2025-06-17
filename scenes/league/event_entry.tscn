@@ -29,7 +29,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:visible")
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/ScoresContainer:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +41,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:modulate")
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/ScoresContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,63 +50,99 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_jgumd"]
 resource_name = "collapse"
-length = 0.4
+length = 0.6
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:visible")
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/ScoresContainer:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:modulate")
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/ScoresContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_eq6x8"]
 resource_name = "expand"
-length = 0.4
+length = 0.6
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:visible")
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/ScoresContainer:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/ExpandContainer:modulate")
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/ScoresContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k6rsm"]
@@ -132,11 +168,11 @@ script = ExtResource("2_6bx1f")
 title_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/EventTitle")
 courses_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Course")
 status_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Status")
-scores_container = NodePath("MarginContainer/VBoxContainer/ExpandContainer")
+scores_container = NodePath("MarginContainer/VBoxContainer/ScoresContainer")
 button = NodePath("Button")
 animation_player = NodePath("AnimationPlayer")
-complete_event_button = NodePath("MarginContainer/VBoxContainer/ExpandContainer/CompleteEventButton")
-no_scores_label = NodePath("MarginContainer/VBoxContainer/ExpandContainer/NoRoundsLabel")
+complete_event_button = NodePath("MarginContainer/VBoxContainer/ScoresContainer/CompleteEventButton")
+no_scores_label = NodePath("MarginContainer/VBoxContainer/ScoresContainer/NoRoundsLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -179,14 +215,14 @@ theme_override_font_sizes/font_size = 40
 text = "Status"
 horizontal_alignment = 2
 
-[node name="ExpandContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ScoresContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="CompleteEventButton" type="Button" parent="MarginContainer/VBoxContainer/ExpandContainer"]
+[node name="CompleteEventButton" type="Button" parent="MarginContainer/VBoxContainer/ScoresContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -206,7 +242,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ml6i7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ml6i7")
 text = "Complete Event"
 
-[node name="NoRoundsLabel" type="Label" parent="MarginContainer/VBoxContainer/ExpandContainer"]
+[node name="NoRoundsLabel" type="Label" parent="MarginContainer/VBoxContainer/ScoresContainer"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.82, 0.6806, 0.123, 1)

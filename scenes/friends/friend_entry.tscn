@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxotin4go21j6"]
+
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_q8ibo"]
+[ext_resource type="Texture2D" uid="uid://dk8dj8adlsenm" path="res://assets/images/profile_button.png" id="2_6vx6m"]
+[ext_resource type="Script" path="res://scripts/friends/friend_entry_node.gd" id="2_l2t7j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yneie"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+
+[node name="FriendEntry" type="HBoxContainer" node_paths=PackedStringArray("rounds_label", "rating_label", "profile_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q8ibo")
+theme_override_constants/separation = 0
+script = ExtResource("2_l2t7j")
+rounds_label = NodePath("RoundsLabel")
+rating_label = NodePath("RatingLabel")
+profile_button = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/h_separation = 32
+theme_override_font_sizes/font_size = 56
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yneie")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yneie")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_yneie")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yneie")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yneie")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yneie")
+text = "Firstname Lastname"
+icon = ExtResource("2_6vx6m")
+alignment = 0
+expand_icon = true
+
+[node name="RoundsLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "24"
+horizontal_alignment = 1
+
+[node name="RatingLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "900"
+horizontal_alignment = 1

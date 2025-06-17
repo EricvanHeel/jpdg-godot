@@ -16,6 +16,7 @@ var standings_scene = preload("res://scenes/home/league_standing.tscn")
 @export var sort_filter: OptionButton
 @export var time_filter: OptionButton
 @export var users_filter: OptionButton
+@export var courses_filter: OptionButton
 
 @export var standings_title: Label
 @export var standings_container: VBoxContainer
@@ -29,7 +30,8 @@ var standings_scene = preload("res://scenes/home/league_standing.tscn")
 @export var flex_round_button: Button
 @export var major_round_button: Button
 @export var league_schedule_button: Button
-@export var manage_league_button: Button
+@export var league_events_button: Button
+@export var friends_button: Button
 @export var sync_data_button: Button
 @export var log_out_button: Button
 
@@ -37,6 +39,7 @@ var last_animation: String = "main_feed"
 var standings_year: int = 0
 
 func _ready() -> void:
+	ClientData.profile_user = ClientData.user
 	profile_button.pressed.connect(_change_scene.bind("res://scenes/stats/profile.tscn"))
 	
 	# Setup standings
@@ -54,7 +57,9 @@ func _ready() -> void:
 	sort_filter.item_selected.connect(_get_rounds)
 	time_filter.item_selected.connect(_get_rounds)
 	users_filter.item_selected.connect(_get_rounds)
-	#_sort_and_add_scorecards(Rounds.get_rounds_this_month())
+	for course in Courses.courses:
+		courses_filter.add_item(course)
+	courses_filter.item_selected.connect(_get_rounds)
 	_sort_and_add_scorecards(Rounds.get_rounds_last_n_days(30))
 	feed_button.pressed.connect(_play_animation.bind("main_feed"))
 	
@@ -62,6 +67,7 @@ func _ready() -> void:
 	menu_button.pressed.connect(_expand_menu)
 	space_button.pressed.connect(_collapse_menu)
 	close_menu_button.pressed.connect(_collapse_menu)
+	friends_button.pressed.connect(_change_scene.bind("res://scenes/friends/friends.tscn"))
 	sync_data_button.pressed.connect(_sync_data)
 	log_out_button.pressed.connect(_log_out)
 	casual_round_button.pressed.connect(_change_scene.bind("res://scenes/play/play_casual.tscn"))
@@ -76,9 +82,7 @@ func _ready() -> void:
 			major_round_button.text = major["name"]
 			major_round_button.visible = true
 			major_round_button.pressed.connect(_change_scene.bind("res://scenes/play/play_major.tscn"))
-		if Leagues.is_admin(ClientData.user, "JPDG"):
-			manage_league_button.visible = true
-			manage_league_button.pressed.connect(_change_scene.bind("res://scenes/league/manage_league.tscn"))
+	league_events_button.pressed.connect(_change_scene.bind("res://scenes/league/manage_league.tscn"))
 	league_schedule_button.pressed.connect(_change_scene.bind("res://scenes/calendar/calendar.tscn"))
 
 func _sort_and_add_scorecards(rounds: Array) -> void:
@@ -86,6 +90,10 @@ func _sort_and_add_scorecards(rounds: Array) -> void:
 		if is_instance_of(child, ScorecardNode):
 			feed_container.remove_child(child)
 			child.queue_free()
+	# Apply course filter
+	if courses_filter.selected > 0:
+		var course = courses_filter.get_item_text(courses_filter.selected)
+		rounds = rounds.filter(func(r): return r["course"] == course)
 	if not rounds:
 		no_rounds_label.visible = true
 		return
@@ -111,7 +119,6 @@ func _get_rounds(index: int) -> void:
 	var users = [ClientData.user] if users_filter.selected else []
 	match time_filter.selected:
 		0:
-			#_sort_and_add_scorecards(Rounds.get_rounds_this_month(users))
 			_sort_and_add_scorecards(Rounds.get_rounds_last_n_days(30, users))
 		1:
 			_sort_and_add_scorecards(Rounds.get_rounds_last_n_days(90, users))

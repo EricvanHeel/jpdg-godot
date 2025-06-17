@@ -406,7 +406,7 @@ _data = {
 "sort_rounds": SubResource("Animation_5f8a0")
 }
 
-[node name="Home" type="Control" node_paths=PackedStringArray("animation_player", "profile_button", "feed_button", "pro_tour_button", "panel_feed", "feed_container", "no_rounds_label", "sort_filter", "time_filter", "users_filter", "courses_filter", "standings_title", "standings_container", "standings_prev_button", "standings_next_button", "menu_button", "space_button", "close_menu_button", "casual_round_button", "flex_round_button", "major_round_button", "league_schedule_button", "league_events_button", "friends_button", "sync_data_button", "log_out_button")]
+[node name="Home" type="Control" node_paths=PackedStringArray("animation_player", "profile_button", "feed_button", "pro_tour_button", "panel_feed", "feed_container", "no_rounds_label", "sort_filter", "time_filter", "users_filter", "standings_title", "standings_container", "standings_prev_button", "standings_next_button", "menu_button", "space_button", "close_menu_button", "casual_round_button", "flex_round_button", "major_round_button", "league_schedule_button", "league_events_button", "sync_data_button", "log_out_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -425,7 +425,6 @@ no_rounds_label = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContaine
 sort_filter = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer/SortFilter")
 time_filter = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer/TimeFilter")
 users_filter = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer/UsersFilter")
-courses_filter = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer/CoursesFilter")
 standings_title = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer/StandingsTitle")
 standings_container = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer")
 standings_prev_button = NodePath("PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/ProTourContainer/StandingsContainer/HBoxContainer/PrevProTourButton")
@@ -438,7 +437,6 @@ flex_round_button = NodePath("PanelContainer/MenuContainer/PanelContainer/Margin
 major_round_button = NodePath("PanelContainer/MenuContainer/PanelContainer/MarginContainer/VBoxContainer/PlayVBox/VBoxContainer/Major")
 league_schedule_button = NodePath("PanelContainer/MenuContainer/PanelContainer/MarginContainer/VBoxContainer/LeagueVBox/LeagueContainer/LeagueCalendar")
 league_events_button = NodePath("PanelContainer/MenuContainer/PanelContainer/MarginContainer/VBoxContainer/LeagueVBox/LeagueContainer/LeagueEvents")
-friends_button = NodePath("PanelContainer/MenuContainer/PanelContainer/MarginContainer/VBoxContainer/AppVBox/VBoxContainer/Friends")
 sync_data_button = NodePath("PanelContainer/MenuContainer/PanelContainer/MarginContainer/VBoxContainer/AppVBox/VBoxContainer/SyncData")
 log_out_button = NodePath("PanelContainer/MenuContainer/PanelContainer/MarginContainer/VBoxContainer/AppVBox/VBoxContainer/LogOut")
 
@@ -577,7 +575,6 @@ theme_override_fonts/font = ExtResource("7_vfgvy")
 theme_override_font_sizes/font_size = 48
 alignment = 1
 selected = 0
-fit_to_longest_item = false
 item_count = 3
 popup/item_0/text = "Rating"
 popup/item_0/id = 2
@@ -589,12 +586,10 @@ popup/item_2/id = 1
 [node name="TimeFilter" type="OptionButton" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.2
 theme_override_fonts/font = ExtResource("7_vfgvy")
 theme_override_font_sizes/font_size = 48
 alignment = 1
 selected = 0
-fit_to_longest_item = false
 item_count = 4
 popup/item_0/text = "30 Days"
 popup/item_1/text = "90 Days"
@@ -607,29 +602,14 @@ popup/item_3/id = 3
 [node name="UsersFilter" type="OptionButton" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.6
 theme_override_fonts/font = ExtResource("7_vfgvy")
 theme_override_font_sizes/font_size = 48
 alignment = 1
 selected = 0
-fit_to_longest_item = false
 item_count = 2
 popup/item_0/text = "All"
 popup/item_1/text = "Me"
 popup/item_1/id = 1
-
-[node name="CoursesFilter" type="OptionButton" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed/MarginFilter/FilterContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.2
-theme_override_fonts/font = ExtResource("7_vfgvy")
-theme_override_font_sizes/font_size = 48
-alignment = 1
-text_overrun_behavior = 3
-selected = 0
-fit_to_longest_item = false
-item_count = 1
-popup/item_0/text = "All"
 
 [node name="Margin" type="MarginContainer" parent="PanelContainer/MainContainer/FeedMargin/VBoxContainer/PanelFeed/MainFeed"]
 layout_mode = 2

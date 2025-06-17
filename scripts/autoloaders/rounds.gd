@@ -103,6 +103,13 @@ func get_all_rounds_by_user(user: String) -> Array:
 			user_rounds.append_array(rounds[user][course][year])
 	return user_rounds
 
+func get_user_rounds_by_year(user: String, year: String) -> Array:
+	var user_rounds = []
+	for course in rounds[user]:
+		if year in rounds[user][course]:
+			user_rounds.append_array(rounds[user][course][year])
+	return user_rounds
+
 func load_latest_rounds_from_remote() -> void:
 	var remote_rounds_dict = await Request.get_rounds(ClientData.last_login)
 	for user in remote_rounds_dict:

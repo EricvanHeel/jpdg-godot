@@ -20,6 +20,7 @@ var type: String
 var index: int
 var year: String
 var event: Dictionary
+var is_complete: bool = false
 
 func setup(_type: String, _index: int, _year: String, league: String = "JPDG") -> void:
 	type = _type
@@ -34,7 +35,7 @@ func setup(_type: String, _index: int, _year: String, league: String = "JPDG") -
 		complete_event_button.visible = false
 	else:
 		var player_node: PlayerEventEntryNode = player_entry_scene.instantiate()
-		player_node.setup("PLAYER", "SCORE", "PLACE", "POINTS")
+		player_node.setup("", "Score", "Place", "Points", false)
 		scores_container.add_child(player_node)
 		_set_event_positions()
 
@@ -85,6 +86,7 @@ func _set_event_details() -> void:
 		_:
 			Common.log("Invalid event type: %s" % type, "ERROR")
 	if event["finish"]:
+		is_complete = true
 		status_label.text = "Completed"
 		complete_event_button.visible = false
 		status_label.add_theme_color_override("font_color", Common.WHITE)
@@ -102,7 +104,13 @@ func _set_event_positions() -> void:
 		finishes.sort_custom(func(a, b): return a["points"] > b["points"])
 		for finish in finishes:
 			var player_entry_node: PlayerEventEntryNode = player_entry_scene.instantiate()
-			player_entry_node.setup(finish["player"], str(finish["strokes"]), finish["place"], str(finish["points"]))
+			player_entry_node.setup(
+				finish["player"],
+				str(finish["strokes"]),
+				finish["place"],
+				str(finish["points"]),
+				ClientData.user in Leagues.leagues["JPDG"]["admins"] and not is_complete
+			)
 			scores_container.add_child(player_entry_node)
 	else:
 		_set_current_event_positions()
@@ -153,14 +161,46 @@ func _set_current_event_positions() -> void:
 		i += 1
 	for entry in top_rounds:
 		var player_entry_node: PlayerEventEntryNode = player_entry_scene.instantiate()
-		player_entry_node.setup(entry["player"], str(entry["strokes"]), entry["place"], str(entry["pts"]))
+		player_entry_node.setup(
+			entry["player"],
+			str(entry["strokes"]),
+			entry["place"],
+			str(entry["pts"]),
+			ClientData.user in Leagues.leagues["JPDG"]["admins"] and not is_complete
+		)
 		scores_container.add_child(player_entry_node)
 
 func _play_animation() -> void:
+	var expanded_y = 168 + ((scores_container.get_child_count() - 2) * 80)
+	var collapsed_y = 120
+	if scores_container.get_child_count() == 2:
+		expanded_y = 224
+	if len(courses_label.text) > 18:
+		expanded_y += 59
+		collapsed_y += 59
+	var animation_name
+	var key_time
 	if scores_container.visible:
-		animation_player.play("collapse")
+		animation_name = "collapse"
+		key_time = 0.6
 	else:
-		animation_player.play("expand")
+		animation_name = "expand"
+		key_time = 0
+	var animation = animation_player.get_animation(animation_name)
+	for i in range(animation.get_track_count()):
+		if animation.track_get_type(i) == Animation.TYPE_VALUE:
+			if animation.track_get_path(i) == NodePath(".:custom_minimum_size"):
+				var expand_index = animation.track_find_key(i, 0.3)
+				if expand_index != -1:
+					animation.track_set_key_value(i, expand_index, Vector2(0, expanded_y))
+				else:
+					Common.log("Could not find animation key", "ERROR")
+				var collapse_index = animation.track_find_key(i, key_time)
+				if collapse_index != -1:
+					animation.track_set_key_value(i, collapse_index, Vector2(0, collapsed_y))
+				else:
+					Common.log("Could not find animation key", "ERROR")
+	animation_player.play(animation_name)
 
 
 

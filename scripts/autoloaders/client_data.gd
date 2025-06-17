@@ -14,7 +14,7 @@ var play_round_event_title: String = ""
 var manage_league: String = "JPDG"
 
 # Below is used to determine who's profile should be loaded
-var profile_user: String = "Evin Bell"  # TODO: not being used yet
+var profile_user: String = ""
 
 func _ready() -> void:
 	if not FileAccess.file_exists(FILE_PATH):

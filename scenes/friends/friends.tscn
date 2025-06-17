@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb35s8072rdd8"]
+
+[ext_resource type="PackedScene" uid="uid://bv1cenko6c662" path="res://scenes/component/header.tscn" id="1_2xdvh"]
+[ext_resource type="Theme" uid="uid://ctw82m53fatsb" path="res://assets/theme/main.tres" id="1_6kk4t"]
+[ext_resource type="Script" path="res://scripts/friends/friends_node.gd" id="1_eqmt8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoxjb"]
+content_margin_left = 64.0
+content_margin_top = 128.0
+content_margin_right = 64.0
+content_margin_bottom = 64.0
+bg_color = Color(0.0666667, 0.219608, 0.137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq75y"]
+content_margin_left = 16.0
+content_margin_top = 32.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.042, 0.14, 0.0877333, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="Friends" type="PanelContainer" node_paths=PackedStringArray("header", "friends_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6kk4t")
+theme_override_styles/panel = SubResource("StyleBoxFlat_uoxjb")
+script = ExtResource("1_eqmt8")
+header = NodePath("VBoxContainer/Header")
+friends_container = NodePath("VBoxContainer/PanelContainer/VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Header" parent="VBoxContainer" instance=ExtResource("1_2xdvh")]
+layout_mode = 2
+
+[node name="Spacer" type="TextureRect" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xq75y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="ColNames" type="HBoxContainer" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer/ColNames"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="RoundsLabel" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer/ColNames"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "2025 Rounds"
+horizontal_alignment = 1
+
+[node name="RatingLabel" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer/ColNames"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.201, 0.67, 0.419867, 1)
+theme_override_font_sizes/font_size = 48
+text = "Rating"
+horizontal_alignment = 1
